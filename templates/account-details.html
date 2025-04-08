@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h1 class="main-title">Account Details</h1>
+
+<p>For a complete experience on this website, please enter your personal details in the form below:</p>
+
+<form method="POST" class="account-form" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="first_name" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ first_name if first_name else '' }}" />
+  </div>
+  <div class="mb-3">
+    <label for="last_name" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ last_name if last_name else '' }}">
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input type="text" class="form-control" id="age" name="age" value="{{ age if age else '' }}">
+  </div>
+
+  <div class="mb-3">
+    <label for="profile_picture" class="form-label">Profile Picture</label>
+    <input type="file" class="form-control" id="profile_picture" name="profile_picture" accept="image/*">
+  </div>
+  <button type="submit" class="btn btn-primary">Save Details</button>
+</form>
+
+{% if profile_picture %}
+  <h2>Profile Picture:</h2>
+  <img src="{{ url_for('static', filename='images/profile/' + profile_picture) }}" alt="Profile Picture" style="max-width: 200px; max-height: 200px;">
+
+{% endif %}
+
+{% endblock %}

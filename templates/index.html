@@ -1,0 +1,62 @@
+{% extends "_base.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <div class="content-box main-content">
+      <h1 class="main-title">Homepage</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+      </p>
+      <p>
+        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti...
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="content-box" id="account">
+      <h4>Your Account</h4>
+      {% if session.get('authenticated') %}
+        <p class="logged-in">Logged in as {{ session.get('username') }}</p>
+        
+        <!-- Add the profile image -->
+        <img src="{{ url_for('static', filename='images/profile/profile-img.png') }}" alt="Profile Picture" class="profile-img" width="144">
+
+        
+      {% else %}
+        <p class="logged-out">Not authenticated!</p>
+        <p>Click <a href="#TODO_task3">here to login</a></p>
+      {% endif %}
+    </div>
+</div>
+
+
+    <div class="content-box">
+      <h4>Changelog</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item list-group-item-light">
+          <div class="d-flex w-100 justify-content-between">
+            <div class="news-item mb-1">We just added authentication!</div>
+            <small class="text-muted">&#128197; 2024-03-31</small>
+          </div>
+        </li>
+        <li class="list-group-item list-group-item-light">
+          <div class="d-flex w-100 justify-content-between">
+            <div class="news-item mb-1">&#128151; Migrate to Flask server</div>
+            <small class="text-muted">&#128197; 2024-03-30</small>
+          </div>
+        </li>
+        <li class="list-group-item list-group-item-light">
+          <div class="d-flex w-100 justify-content-between">
+            <div class="news-item mb-1">First version of the website</div>
+            <small class="text-muted">&#128197; 2024-03-27</small>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
